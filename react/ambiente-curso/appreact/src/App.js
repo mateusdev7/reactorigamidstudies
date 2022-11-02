@@ -1,46 +1,68 @@
 import React from "react"
 
-const titulo = <h1>Esse é um título</h1>
+// Mostre os dados da aplicação, como aprensetado no vídeo
+// Não utilize CSS externo, use o style para mudar as cores
+// Se a situação estiver ativa pinte de verde, inativa vermelho
+// Se o gasto for maior que 10000 mostre uma mensagem
+
+const luana = {
+  cliente: "Luana",
+  idade: 27,
+  compras: [
+    { nome: "Notebook", preco: "R$ 2500" },
+    { nome: "Geladeira", preco: "R$ 3000" },
+    { nome: "Smartphone", preco: "R$ 1500" },
+  ],
+  ativa: true,
+}
+
+const mario = {
+  cliente: "Mario",
+  idade: 31,
+  compras: [
+    { nome: "Notebook", preco: "R$ 2500" },
+    { nome: "Geladeira", preco: "R$ 3000" },
+    { nome: "Smartphone", preco: "R$ 1500" },
+    { nome: "Guitarra", preco: "R$ 3500" },
+  ],
+  ativa: false,
+}
+
+function totalGasto(nomeCliente) {
+  let total = 0;
+  nomeCliente.compras.forEach((item) => {
+    total += Number(item.preco.replace('R$ ', ''));
+  })
+  return total;
+}
+
+function mostrarMensagem(nomeCliente) {
+  if (totalGasto(nomeCliente) > 10000) {
+    return 'Você está gastando muito'
+  } else {
+    return ''
+  }
+}
+
+function estiloCor(nomeCliente) {
+  if (!(nomeCliente.ativa)) {
+    const estilos = {
+      color: "red",
+    }
+    return estilos
+  }
+}
 
 const App = () => {
-  const nome = 'Mateus';
-  const ativo = true;
-
-  function mostrarNome(sobrenome ) {
-    return ` Julia ${sobrenome}`
-  }
-
-  const carro = {
-    marca: 'Mercedes',
-    piloto: 'Hamilton',
-    numero: 44,
-  }
-
-  const estilos = {
-    color: 'blue',
-    fontSize: '20px',
-    fontFamily: 'Arial'
-  }
-
   return (
     <React.Fragment>
-      <a className="ativo" href="https://origamid.com" title="Isso é um site">
-        Origamid
-      </a>
-      <label htmlFor="nome">Nome</label>
-      <input type="text" id="nome" />
-      {titulo}
+      <p>Nome: {mario.cliente}</p>
+      <p>Idade: {mario.idade}</p>
       <p>
-        {true ? 'Teste 1' : 'Teste 2'} -
-        {mostrarNome('Machado')}
+        Situação: <span style={estiloCor(mario)}>{mario.ativa ? "Ativa" : "Inativa"}</span>
       </p>
-      <p style={estilos}>
-        {`${new Date().getDate()} / ${new Date().getMonth() + 1} / ${new Date().getFullYear()}`}
-      </p>
-      <p className={ativo ? "ativo" : "inativo"}>{nome}</p>
-      <p>
-        {carro.marca}
-      </p>
+      <p>Total Gasto: R$ {totalGasto(mario)}</p>
+      <p>{mostrarMensagem(mario)}</p>
     </React.Fragment>
   )
 }
