@@ -29,40 +29,42 @@ const mario = {
 }
 
 function totalGasto(nomeCliente) {
-  let total = 0;
+  let total = 0
   nomeCliente.compras.forEach((item) => {
-    total += Number(item.preco.replace('R$ ', ''));
+    total += Number(item.preco.replace("R$ ", ""))
   })
-  return total;
+  return total
 }
 
 function mostrarMensagem(nomeCliente) {
-  if (totalGasto(nomeCliente) > 10000) {
-    return 'Você está gastando muito'
-  } else {
-    return ''
-  }
+  return totalGasto(nomeCliente) > 10000 && 'Você está gastando muito'
 }
 
 function estiloCor(nomeCliente) {
-  if (!(nomeCliente.ativa)) {
-    const estilos = {
-      color: "red",
-    }
-    return estilos
+  const estilos = {
+    color: nomeCliente.ativa ? "green" : "red",
   }
+  return estilos
 }
 
 const App = () => {
+  const dados = luana
+  // const total = dados.compras
+  //   .map((item) => Number(item.preco.replace("R$ ", "")))
+  //   .reduce((a, b) => a + b)
+
   return (
     <React.Fragment>
-      <p>Nome: {mario.cliente}</p>
-      <p>Idade: {mario.idade}</p>
+      <p>Nome: {dados.cliente}</p>
+      <p>Idade: {dados.idade}</p>
       <p>
-        Situação: <span style={estiloCor(mario)}>{mario.ativa ? "Ativa" : "Inativa"}</span>
+        Situação:{" "}
+        <span style={estiloCor(dados)}>
+          {dados.ativa ? "Ativa" : "Inativa"}
+        </span>
       </p>
-      <p>Total Gasto: R$ {totalGasto(mario)}</p>
-      <p>{mostrarMensagem(mario)}</p>
+      <p>Total Gasto: R$ {totalGasto(dados)}</p>
+      <p>{mostrarMensagem(dados)}</p>
     </React.Fragment>
   )
 }
