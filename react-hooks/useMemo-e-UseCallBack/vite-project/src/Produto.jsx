@@ -1,5 +1,5 @@
-import React from 'react';
-import { GlobalContext} from './GlobalContext.jsx';
+import React from "react";
+import { GlobalContext } from "./GlobalContext.jsx";
 
 const Produto = () => {
   const global = React.useContext(GlobalContext);
@@ -8,7 +8,7 @@ const Produto = () => {
     <div>
       Produto: {global.contar} <button onClick={() => global.adicionarDois()}>Adicionar</button>
     </div>
-  )
-}
+  );
+};
 
-export default Produto
+export default Produto;
