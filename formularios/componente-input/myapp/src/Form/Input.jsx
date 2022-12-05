@@ -3,7 +3,6 @@ const Input = ({ labelName, id, value, setValue, ...props }) => {
     <>
       <label htmlFor={id}>{labelName}</label>
       <input
-        type="text"
         name={id}
         id={id}
         value={value}
