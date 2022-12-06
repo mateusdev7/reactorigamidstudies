@@ -37,7 +37,7 @@ const useForm = (type) => {
     setValue(target.value);
   }
 
-  return {
+  return { 
     value,
     setValue,
     error,
