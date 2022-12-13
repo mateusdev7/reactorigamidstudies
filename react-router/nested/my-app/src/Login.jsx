@@ -1,0 +1,18 @@
+import { useNavigate } from 'react-router-dom'
+
+const Login = () => {
+  const navigate = useNavigate();
+  function handleClick() {
+    console.log('Fazer login')
+    navigate('/sobre')
+  }
+  return (
+    <div>
+      <h1>Login</h1>
+      <p>Essa é a página de login</p>
+      <button onClick={handleClick}>Login</button>
+    </div>
+  )
+}
+
+export default Login
