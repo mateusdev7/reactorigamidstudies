@@ -7,7 +7,7 @@ const Contato = () => {
       <div>
         <h1>Entre em contato.</h1>
         <ul className={styles.dados}>
-          <li>mateus@gmail.com</li>
+          <li>mateuspaulo1337@gmail.com</li>
           <li>+5527995249319</li>
           <li>Escadaria Santino Bruschi</li>
         </ul>

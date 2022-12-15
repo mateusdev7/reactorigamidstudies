@@ -5,5 +5,14 @@
 }
 
 .nome {
-  margin: .5rem 0;
+  margin: 0.5rem 0;
+}
+
+.link {
+  transform: scale(1);
+  transition: all linear 0.1s;
+}
+
+.link:hover {
+  transform: scale(1.05);
 }
